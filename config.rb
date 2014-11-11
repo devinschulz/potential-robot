@@ -1,3 +1,5 @@
+require 'sanitize'
+
 ###
 # Site Settings
 ###
@@ -53,9 +55,10 @@ configure :development do
   activate :livereload
 end
 
-set :css_dir, 'stylesheets'
-set :js_dir, 'javascripts'
-set :images_dir, 'images'
+config[:js_dir] = 'assets/js'
+config[:css_dir] = 'assets/css'
+config[:images_dir] = 'assets/images'
+
 set :haml, { :ugly => true, :format => :html5 }
 
 configure :build do
@@ -110,6 +113,10 @@ helpers do
     end
 
     description
+  end
+
+  def summary(article)
+    Sanitize.clean(article.summary, whitespace_elements: %w(h1))
   end
 
   def current_article_url
