@@ -1,0 +1,18 @@
+.container
+  %article.post
+    %h1= current_article.title
+    %time{datetime: current_article.date.strftime('%Y-%m-%d')}
+      = current_article.date.strftime('%d %b %Y')
+    .content
+      = content
+
+    - if current_article.tags.present?
+      %ul
+        - current_article.tags.each do |tag|
+          %li= link_to(tag, tag_path(tag))
+
+  - if similar_articles.present?
+    %h2 Related Articles
+    %ul
+      - similar_articles.first(2).each do |article|
+        %li= link_to article.title, article.url
