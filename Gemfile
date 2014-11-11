@@ -8,7 +8,8 @@ gem "middleman-blog", "~> 3.5.3"
 gem "therubyracer"
 gem "middleman-imageoptim"
 gem 'middleman-blog-similar'
-gem 'nokogiri'
+gem 'nokogiri', '~> 1.6.3.1'
+gem 'sanitize', '~> 3.0.2'
 
 # For feed.xml.builder
 gem "builder", "~> 3.0"
