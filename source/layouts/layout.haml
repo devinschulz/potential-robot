@@ -9,8 +9,9 @@
     %meta{name: 'HandheldFriendly', content: 'True'}
     %meta{name: 'MobileOptimized', content: 320}
     = feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed"
-    = stylesheet_link_tag "normalize"
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700", "styles"
     = yield_content :styles
+
   %body{:class => page_classes}
     %header
       %ul

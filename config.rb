@@ -10,8 +10,7 @@ require 'pygments'
 set :blog_url, 'http://devinschulz.com'
 set :blog_name, 'Devin Schulz'
 set :blog_description, 'Makes developing websites simple.'
-set :author_name, 'Devin Schulz'
-set :author_bio, 'Middleman is a static site generator using all the shortcuts and tools in modern web development.'
+
 @analytics_account = false
 
 ###
@@ -61,6 +60,7 @@ end
 config[:js_dir] = 'assets/js'
 config[:css_dir] = 'assets/css'
 config[:images_dir] = 'assets/images'
+config[:font_dir] = 'assets/fonts'
 
 set :haml, { :ugly => true, :format => :html5 }
 
@@ -72,9 +72,6 @@ configure :build do
   activate :gzip
   activate :minify_html
   activate :imageoptim
-
-  # Or use a different image path
-  # set :http_prefix, "/Content/images/"
 end
 
 ###
