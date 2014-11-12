@@ -15,3 +15,7 @@ gem "pygments.rb"
 
 # For feed.xml.builder
 gem "builder", "~> 3.0"
+
+gem "bourbon"
+gem "neat"
+gem "bitters", require: false
