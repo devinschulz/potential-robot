@@ -1,19 +1,12 @@
 ---
 title: Articles
+pageable: true
 ---
 
-.container
+.container.section
   %h1 Articles
-  - if paginate && num_pages > 1
-    %p
-      Page #{page_number} of #{num_pages}
-
-    - if prev_page
-      %p= link_to 'Previous page', prev_page
 
   - page_articles.each_with_index do |article, i|
-    = partial 'article', :locals => {:article => article}
+    = partial 'partials/article', :locals => { :article => article }
 
-  - if paginate
-    - if next_page
-      %p= link_to 'Next page', next_page
+  = partial 'partials/pagination', :locals => { :paginate => paginate, :num_pages => num_pages, :next_page => next_page, :prev_page => prev_page }

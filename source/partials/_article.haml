@@ -1,0 +1,10 @@
+%article.article
+  %h2= link_to article.title, article
+  %p
+    %time{datetime: article.date.strftime('%Y-%m-%d')}= article.date.strftime('%b %e')
+
+    - if article.tags.present?
+      - article.tags.each do |tag|
+        = link_to(tag, tag_path(tag))
+
+  = summary(article)
