@@ -1,13 +1,13 @@
-.container
+.container.section
   %article.post
     %h1= current_article.title
-    .post__meta
-      %time{datetime: current_article.date.strftime('%Y-%m-%d')}
-        = current_article.date.strftime('%d %b %Y')
+    %p.post__meta
+      %time{datetime: current_article.date.strftime('%Y-%m-%d')}= current_article.date.strftime('%d %b %Y')
       - if current_article.tags.present?
         %ul
           - current_article.tags.each do |tag|
             %li= link_to(tag, tag_path(tag))
+
     .post__content
       = content
 
@@ -21,9 +21,13 @@
 
   %section.share
     %h4 Share this post
-    %a.icon-twitter{href: twitter_url, onclick: "window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"}
-      %span.hidden Twitter
-    %a.icon-facebook{href: facebook_url, onclick: "window.open(this.href, 'facebook-share','width=580,height=296');return false;"}
-      %span.hidden Facebook
-    %a.icon-google-plus{href: google_plus_url, onclick: "window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"}
-      %span.hidden Google+
+    %ul
+      %li
+        %a.icon-twitter{href: twitter_url, onclick: "window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"}
+          %span.hidden Twitter
+      %li
+        %a.icon-facebook{href: facebook_url, onclick: "window.open(this.href, 'facebook-share','width=580,height=296');return false;"}
+          %span.hidden Facebook
+      %li
+        %a.icon-google-plus{href: google_plus_url, onclick: "window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"}
+          %span.hidden Google+
