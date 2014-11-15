@@ -1,0 +1,7 @@
+fb:
+  description: 'This is my fixture Middleman site.'
+  image:
+    '': http://mydomain.tld/path/to/fbimage.png
+    type: image/png
+    width: 400
+    height: 300
