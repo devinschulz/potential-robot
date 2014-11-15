@@ -1,8 +1,8 @@
-.container.section
+.container
   %article.post
     %h1= current_article.title
     %p.post__meta
-      %time{datetime: current_article.date.strftime('%Y-%m-%d')}= current_article.date.strftime('%d %b %Y')
+      %time{datetime: current_article.date.strftime('%Y-%m-%d')}= current_article.date.strftime(@date_format)
       - if current_article.tags.present?
         %ul
           - current_article.tags.each do |tag|
@@ -19,15 +19,25 @@
           %h3= link_to article.title, article.url
           = summary(article)
 
+  %ul
+    %li.previous
+      - prev_article = current_article.previous_article
+      - if prev_article
+        = link_to "Previous Article", prev_article.url, rel: "prev", title: "Previous article: #{prev_article.title}"
+    %li.next
+      - next_article = current_article.next_article
+      - if next_article
+        = link_to "Next Article", next_article.url, rel: "next", title: "Next article: #{next_article.title}"
+
   %section.share
     %h4 Share this post
     %ul
       %li
-        %a.icon-twitter{href: twitter_url, onclick: "window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"}
+        %a.twitter{href: twitter_url, onclick: "window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"}
           %span.hidden Twitter
       %li
-        %a.icon-facebook{href: facebook_url, onclick: "window.open(this.href, 'facebook-share','width=580,height=296');return false;"}
+        %a.facebook{href: facebook_url, onclick: "window.open(this.href, 'facebook-share','width=580,height=296');return false;"}
           %span.hidden Facebook
       %li
-        %a.icon-google-plus{href: google_plus_url, onclick: "window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"}
+        %a.google-plus{href: google_plus_url, onclick: "window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"}
           %span.hidden Google+
