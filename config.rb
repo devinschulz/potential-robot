@@ -11,7 +11,8 @@ set :blog_url, 'http://devinschulz.com'
 set :blog_name, 'Devin Schulz'
 set :blog_description, 'Makes developing websites simple.'
 
-@date_format = '%Y.%m.%d'
+@date_format_extended = '%FT%T%:z'
+@date_format = '%B %d, %Y'
 
 ###
 # Blog settings
@@ -26,7 +27,7 @@ activate :blog do |blog|
   blog.permalink = "/article/{year}/{month}/{title}.html"
   # Matcher for blog source files
   blog.sources = "/articles/{year}-{month}-{day}-{title}.html"
-  blog.taglink = "tags/{tag}.html"
+  blog.taglink = "tag/{tag}.html"
   # blog.layout = "article"
   # blog.summary_separator = /(READMORE)/
   # blog.summary_length = 250

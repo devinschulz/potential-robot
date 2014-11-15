@@ -2,7 +2,7 @@
   %article.post
     %h1= current_article.title
     %p.post__meta
-      %time{datetime: current_article.date.strftime('%Y-%m-%d')}= current_article.date.strftime(@date_format)
+      %time{datetime: current_article.date.strftime(@date_format_extended)}= current_article.date.strftime(@date_format)
       - if current_article.tags.present?
         %ul
           - current_article.tags.each do |tag|
@@ -12,22 +12,21 @@
       = content
 
   - if similar_articles.present?
-    %h2 Related Articles
-    %ul
-      - similar_articles.first(2).each do |article|
-        %li
-          %h3= link_to article.title, article.url
-          = summary(article)
+    %section.related
+      %h2 Related Articles
+      %ul
+        - similar_articles.first(2).each do |article|
+          %li
+            %h3= link_to article.title, article.url
+            = summary(article)
 
-  %ul
-    %li.previous
-      - prev_article = current_article.previous_article
-      - if prev_article
-        = link_to "Previous Article", prev_article.url, rel: "prev", title: "Previous article: #{prev_article.title}"
-    %li.next
-      - next_article = current_article.next_article
-      - if next_article
-        = link_to "Next Article", next_article.url, rel: "next", title: "Next article: #{next_article.title}"
+  - prev_article = current_article.previous_article
+  - next_article = current_article.next_article
+
+  - if prev_article
+    = link_to prev_article.title, prev_article.url, rel: "prev", title: "Previous article: #{prev_article.title}"
+  - if next_article
+    = link_to next_article.title, next_article.url, rel: "next", title: "Next article: #{next_article.title}"
 
   %section.share
     %h4 Share this post
