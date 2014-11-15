@@ -11,7 +11,7 @@ set :blog_url, 'http://devinschulz.com'
 set :blog_name, 'Devin Schulz'
 set :blog_description, 'Makes developing websites simple.'
 
-@analytics_account = false
+@date_format = '%Y.%m.%d'
 
 ###
 # Blog settings
@@ -23,7 +23,7 @@ activate :blog do |blog|
   # This will add a prefix to all links, template references and source paths
   # blog.prefix = "articles"
 
-  blog.permalink = "{year}/{month}/{title}.html"
+  blog.permalink = "/article/{year}/{month}/{title}.html"
   # Matcher for blog source files
   blog.sources = "/articles/{year}-{month}-{day}-{title}.html"
   blog.taglink = "tags/{tag}.html"
@@ -50,19 +50,37 @@ page "/feed.xml", layout: false
 # Page options, layouts, aliases and proxies
 ###
 
-activate :directory_indexes
-activate :similar
-
-configure :development do
-  activate :livereload
-end
-
 config[:js_dir] = 'assets/js'
 config[:css_dir] = 'assets/css'
 config[:images_dir] = 'assets/images'
 config[:font_dir] = 'assets/fonts'
 
 set :haml, { :ugly => true, :format => :html5 }
+set :markdown_engine, :redcarpet
+set :markdown, :fenced_code_blocks => true, :smartypants => true
+set :url_root, 'http://devinschulz.com'
+
+activate :search_engine_sitemap
+activate :directory_indexes
+activate :similar
+activate :syntax, :line_numbers => true
+activate :autoprefixer do |config|
+  config.browsers = ['last 4 versions', 'Explorer >= 9, > 5%']
+end
+activate :ogp do |ogp|
+  ogp.namespaces = {
+      fb: data.ogp.fb,
+      # from data/ogp/fb.yml
+      og: data.ogp.og
+      # from data/ogp/og.yml
+  }
+  ogp.base_url = 'http://devinschulz.com'
+  ogp.blog = true
+end
+
+configure :development do
+  activate :livereload
+end
 
 configure :build do
   activate :minify_css
@@ -72,6 +90,11 @@ configure :build do
   activate :gzip
   activate :minify_html
   activate :imageoptim
+  activate :google_analytics do |ga|
+    ga.tracking_id = 'UA-XXXXXXX-X'
+    ga.domain_name = 'devinschulz.com'
+    ga.minify = true
+  end
 end
 
 ###
