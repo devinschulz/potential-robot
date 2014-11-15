@@ -1,16 +1,17 @@
 module CustomHelpers
 
-  def link_to_page(name, url)
-    path = request.path
-    current = path =~ Regexp.new('^' + url[1..-1] + '.*\.html')
+  def nav_link(name, url, options={})
+    options = {
+      class: "nav__list__item",
+      active_if: url,
+      page: current_page.url
+    }.update options
 
-    if path == 'index.html' and name == 'about'
-      current = true
-    end
+    active_url = options.delete(:active_if)
+    active = Regexp === active_url ? current_page.url =~ active_url : current_page.url == active_url
+    options[:class] += " active" if active
 
-    class_name = current ? ' class="active"' : ''
-
-    "<li#{class_name}><a href=\"#{url}\">#{name}</a></li>"
+    content_tag(:li, link_to(name, url), options)
   end
 
   def page_classes
@@ -22,9 +23,9 @@ module CustomHelpers
   def page_title
     title = blog_name.dup
     if current_page.data.title
-      title << ": #{current_page.data.title}"
+      title << " | #{current_page.data.title}"
     elsif is_blog_article?
-      title << ": #{current_article.title}"
+      title << " | #{current_article.title}"
     end
     title
   end
@@ -41,6 +42,11 @@ module CustomHelpers
 
   def summary(article)
     Sanitize.clean(article.summary, whitespace_elements: %w(h1))
+  end
+
+  def copyright
+    date = Time.now.strftime('%Y')
+    "&copy; #{date}"
   end
 
   def current_article_url

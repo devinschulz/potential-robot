@@ -1,0 +1,6 @@
+%header.container
+  %nav.nav
+    %ul.nav__list
+      = nav_link("Articles", "/", active_if: %r{(^|,)\/(,|$)|^\/article})
+      = nav_link("About", "/about/")
+      = nav_link("Contact", "/contact/")
