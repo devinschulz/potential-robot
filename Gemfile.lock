@@ -166,6 +166,8 @@ GEM
       nokogiri (>= 1.4.4)
       nokogumbo (= 1.1.12)
     sass (3.4.7)
+    sass-media_query_combiner (0.0.6)
+      sass (>= 3.2.0)
     sprockets (2.12.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -215,4 +217,5 @@ DEPENDENCIES
   rack-codehighlighter!
   redcarpet
   sanitize (~> 3.0.2)
+  sass-media_query_combiner
   therubyracer

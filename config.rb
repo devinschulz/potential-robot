@@ -3,6 +3,9 @@ require 'lib/custom_helpers'
 require 'rack/codehighlighter'
 require 'pygments'
 
+# for all the media query OCD
+require 'sass-media_query_combiner'
+
 ###
 # Site Settings
 ###
@@ -113,3 +116,4 @@ use Rack::Codehighlighter,
     :element => "pre>code",
     :pattern => /\A:::([-_+\w]+)\s*\n/,
     :markdown => true
+

@@ -18,6 +18,7 @@ gem "sanitize", "~> 3.0.2"
 gem "rack-codehighlighter", :git => "git://github.com/wbzyl/rack-codehighlighter.git"
 gem "pygments.rb"
 gem "redcarpet"
+gem "sass-media_query_combiner"
 
 # For feed.xml.builder
 gem "builder", "~> 3.0"
