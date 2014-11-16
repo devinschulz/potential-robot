@@ -6,9 +6,10 @@ change_frequency: daily
 ---
 
 .container
-  %h1 Articles
-
-  - page_articles.each_with_index do |article, i|
-    = partial 'partials/article', :locals => { :article => article }
-
-  = partial 'partials/pagination', :locals => { :paginate => paginate, :num_pages => num_pages, :next_page => next_page, :prev_page => prev_page, :page_number => page_number }
+  %header.masthead
+    %h1.masthead__title Articles
+  %section.row
+    - page_articles.each_with_index do |article, i|
+      = partial 'partials/article', :locals => { :article => article }
+  %section.row
+    = partial 'partials/pagination', :locals => { :paginate => paginate, :num_pages => num_pages, :next_page => next_page, :prev_page => prev_page, :page_number => page_number }
