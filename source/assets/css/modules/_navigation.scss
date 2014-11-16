@@ -1,0 +1,48 @@
+.nav {
+  @extend %row;
+  padding: em(10) 0;
+  line-height: 1;
+
+  @include media($mobile-landscape) {
+    padding: em(20) 0;
+  }
+
+  @include media($tablet) {
+    padding: em(28) 0;
+  }
+}
+
+.nav__list {
+  text-align: center;
+  display: block;
+  @extend %row;
+}
+
+.nav__list__item {
+  display: inline-block;
+
+  @include media($mobile-landscape) {
+    padding: 0 em(10);
+  }
+
+  @include media($tablet) {
+
+  }
+  
+  a {
+    display: block;
+    float: left;
+    padding: em(5) em(10);
+    @extend %uppercase;
+    font-size: em(14);
+    letter-spacing: 2px;
+    color: $medium-gray;
+  }
+
+  &.active {
+
+    a {
+      color: $gray;
+    }
+  }
+}

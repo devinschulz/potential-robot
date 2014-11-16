@@ -1,0 +1,105 @@
+//=============================================
+// Breakpoints
+//=============================================
+
+$mobile-width:              em(320);
+$mobile-width-max:          em(479);
+$mobile-landscape-width:    em(480);
+$mobile-landscape-width-max:em(767);
+$tablet-width:              em(768);
+$tablet-width-max:          em(959);
+$desktop-width:             em(960);
+$super-width:               em(1120);
+
+$mobile:                    new-breakpoint($mobile-width, 4);
+$mobile-max:                new-breakpoint(max-width $mobile-width-max, 4);
+$mobile-landscape:          new-breakpoint($mobile-landscape-width, 6);
+$mobile-landscape-max:      new-breakpoint(max-width $mobile-landscape-width-max, 6);
+$tablet:                    new-breakpoint($tablet-width, 8);
+$tablet-max:                new-breakpoint(max-width $tablet-width-max, 8);
+$desktop:                   new-breakpoint($desktop-width, 12);
+$super:                     new-breakpoint($super-width, 12);
+
+//=============================================
+// Neat
+//=============================================
+
+$grid-columns:              4;
+$max-width:                 $super-width;
+
+//=============================================
+// Typography
+//=============================================
+
+$sans-serif: 'Proxima Nova Rg', $helvetica;
+$serif: $georgia;
+$base-font-family: $sans-serif;
+$header-font-family: $sans-serif;
+
+$font-weight-light: 200;
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+
+// Font Sizes
+$base-font-size: 1em;
+$h1-font-size: $base-font-size * 2.25;
+$h2-font-size: $base-font-size * 2;
+$h3-font-size: $base-font-size * 1.75;
+$h4-font-size: $base-font-size * 1.5;
+$h5-font-size: $base-font-size * 1.25;
+$h6-font-size: $base-font-size;
+
+// Line height
+$base-line-height: 1.7;
+$header-line-height: 1.25;
+
+// Other Sizes
+$base-border-radius: 3px;
+$base-spacing: $base-line-height * 1em;
+$base-z-index: 0;
+
+// Colors
+$blue: #477DCA;
+$dark-gray: #4A4A4A;
+$gray: #666666;
+$medium-gray: #C9C9C9;
+$light-gray: #DDD;
+$light-red: #FBE3E4;
+$light-yellow: #FFF6BF;
+$light-green: #E6EFC2;
+
+// Background Color
+$base-background-color: white;
+
+// Font Colors
+$base-font-color: $dark-gray;
+$base-accent-color: $blue;
+
+// Link Colors
+$base-link-color: $base-accent-color;
+$hover-link-color: darken($base-accent-color, 15);
+$base-button-color: $base-link-color;
+$hover-button-color: $hover-link-color;
+
+// Flash Colors
+$alert-color: $light-yellow;
+$error-color: $light-red;
+$notice-color: lighten($base-accent-color, 40);
+$success-color: $light-green;
+
+// Border color
+$base-border-color: $light-gray;
+$base-border: 1px solid $base-border-color;
+
+// Forms
+$form-border-color: $base-border-color;
+$form-border-color-hover: darken($base-border-color, 10);
+$form-border-color-focus: $base-accent-color;
+$form-border-radius: $base-border-radius;
+$form-box-shadow: inset 0 1px 3px rgba(black,0.06);
+$form-box-shadow-focus: $form-box-shadow, 0 0 5px rgba(darken($form-border-color-focus, 5), 0.7);
+$form-font-size: $base-font-size;
+$form-font-family: $base-font-family;
+
+// Grid
+$max-width: em(535);

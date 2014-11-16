@@ -1,0 +1,34 @@
+.masthead {
+  @extend %row;
+  text-align: center;
+  padding: em(20) 0 em(30);
+
+  @include media($mobile-landscape) {
+    padding: em(30) 0 em(50);
+  }
+
+  @include media($tablet) {
+    padding: em(50) 0 em(70);
+  }
+
+  @include media($desktop) {
+    padding: em(60) 0 em(80);
+  }
+}
+
+.masthead__title {
+  @extend %uppercase;
+  font-size: $h1-font-size * 0.75;
+
+  @include media($mobile-landscape) {
+    font-size: $h1-font-size;
+  }
+
+  @include media($tablet) {
+    font-size: $h1-font-size * 1.25;
+  }
+
+  @include media($desktop) {
+    font-size: $h1-font-size * 1.4;
+  }
+}
