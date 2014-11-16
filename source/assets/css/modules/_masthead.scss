@@ -3,16 +3,30 @@
   text-align: center;
   padding: em(20) 0 em(30);
 
+  .flourish {
+    margin-bottom: em(10);
+    max-width: em(80);
+  }
+
   @include media($mobile-landscape) {
-    padding: em(30) 0 em(50);
+    padding: em(10) 0 em(50);
   }
 
   @include media($tablet) {
-    padding: em(50) 0 em(70);
+    padding: em(30) 0 em(70);
+
+    .flourish {
+      margin-bottom: em(30);
+      max-width: 100%;
+    }
   }
 
   @include media($desktop) {
-    padding: em(60) 0 em(80);
+    padding: em(40) 0 em(80);
+
+    .flourish {
+      margin-bottom: em(45);
+    }
   }
 }
 
