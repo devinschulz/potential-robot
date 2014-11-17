@@ -1,0 +1,53 @@
+.articles {
+  max-width: em(800);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.article {
+  @extend %row;
+
+  a {
+    padding: em(10) em(10);
+    @extend %row;
+
+    @include media($tablet) {
+      padding: em(15) em(15);
+    }
+  }
+
+  &:hover {
+    a {
+      background: #F8F8F8;
+    }
+
+    .article__meta {
+      color: #979797;
+    }
+  }
+
+  @include media($mobile-max) {
+    text-align: center;
+  }
+}
+
+.article__title {
+  @extend h5;
+  @extend %no-bottom;
+  color: $gray;
+
+  @include media($mobile-landscape) {
+    @include span-columns(3 of 6, inline-block);
+  }
+}
+
+.article__meta {
+  color: $medium-gray;
+  @extend %no-bottom;
+
+  @include media($mobile-landscape) {
+    text-align: right;
+    @include span-columns(3 of 6, inline-block);
+    @include omega();
+  }
+}
