@@ -1,0 +1,49 @@
+.related {
+  @extend %row;
+  padding: em(20) 0;
+
+  @include media($tablet) {
+    padding: em(40) 0;
+  }
+}
+
+.related__title {
+  @extend %row;
+  @extend h3;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: em(20);
+  letter-spacing: 2px;
+}
+
+.related__list__item__title {
+  font-size: em(18);
+  margin-bottom: em(10);
+  a {
+    color: $base-font-color;
+  }
+}
+
+.related__list {
+  @extend %row;
+
+  @include media($mobile-landscape) {
+
+    &.has--one {
+
+      .related__list__item {
+        @include fill-parent;
+      }
+    }
+
+    &.has--two {
+      .related__list__item {
+        @include span-columns(3 of 6, inline-block);
+
+        &:last-child {
+          @include omega();
+        }
+      }
+    }
+  }
+}

@@ -1,24 +1,48 @@
-.container
-  %article.post
-    %h1= current_article.title
+%article.post
+  .masthead
+    = embedded_svg "flourish.svg", options={ class: "flourish" }
+    %h1.masthead__title= current_article.title
     %p.post__meta
       %time{datetime: current_article.date.strftime(@date_format_extended)}= current_article.date.strftime(@date_format)
       - if current_article.tags.present?
-        %ul
-          - current_article.tags.each do |tag|
-            %li= link_to(tag, tag_path(tag))
+        in
+        - tag_length = current_article.tags.length
+        - current_article.tags.each_with_index do |tag, index|
+          - unless tag_length - 1 == index
+            = succeed ", " do
+              = link_to(tag, tag_path(tag))
+          - else
+            = link_to(tag, tag_path(tag))
 
+  .container
     .post__content
       = content
+      .post__flourish
+        = embedded_svg "flourish.svg", options={ class: "flourish" }
 
-  - if similar_articles.present?
-    %section.related
-      %h2 Related Articles
+    - if similar_articles.present?
+      %section.related
+        %h2.related__title Related Articles
+        - articles = similar_articles.first(2)
+        - klass = articles.length - 1 % 2 ? "has--two" : "has--one"
+        %ul{ class: "related__list #{klass}"}
+          - similar_articles.first(2).each do |article|
+            %li.related__list__item
+              %h3.related__list__item__title= link_to article.title, article.url
+              %p.related__list__item__summary= summary(article)
+
+    %section.share
+      %h4 Share this post
       %ul
-        - similar_articles.first(2).each do |article|
-          %li
-            %h3= link_to article.title, article.url
-            = summary(article)
+        %li.twitter
+          %a{href: twitter_url, onclick: "window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"}
+            %span.hidden Twitter
+        %li.facebook
+          %a{href: facebook_url, onclick: "window.open(this.href, 'facebook-share','width=580,height=296');return false;"}
+            %span.hidden Facebook
+        %li.google-plus
+          %a{href: google_plus_url, onclick: "window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"}
+            %span.hidden Google+
 
   - prev_article = current_article.previous_article
   - next_article = current_article.next_article
@@ -27,16 +51,3 @@
     = link_to prev_article.title, prev_article.url, rel: "prev", title: "Previous article: #{prev_article.title}"
   - if next_article
     = link_to next_article.title, next_article.url, rel: "next", title: "Next article: #{next_article.title}"
-
-  %section.share
-    %h4 Share this post
-    %ul
-      %li
-        %a.twitter{href: twitter_url, onclick: "window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"}
-          %span.hidden Twitter
-      %li
-        %a.facebook{href: facebook_url, onclick: "window.open(this.href, 'facebook-share','width=580,height=296');return false;"}
-          %span.hidden Facebook
-      %li
-        %a.google-plus{href: google_plus_url, onclick: "window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"}
-          %span.hidden Google+

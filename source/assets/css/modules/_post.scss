@@ -1,0 +1,29 @@
+.post {
+
+}
+
+.post__meta {
+  font-size: em(13);
+  color: $medium-gray;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: em(20);
+  margin-bottom: 0;
+  a {
+    color: $medium-gray;
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+
+.post__flourish {
+  @extend %row;
+  text-align: center;
+  margin-top: em(20);
+
+  @include media($tablet) {
+    margin-top: em(40);
+  }
+}
