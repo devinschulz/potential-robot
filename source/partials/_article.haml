@@ -1,5 +1,6 @@
 %article.article
-  %h2.h5= link_to article.title, article
-  %p
-    %time{datetime: article.date.strftime(@date_format_extended)}
-      = article.date.strftime(@date_format)
+  = link_to article do
+    %h2.article__title= article.title
+    %p.article__meta
+      %time{datetime: article.date.strftime(@date_format_extended)}
+        = article.date.strftime(@date_format)
