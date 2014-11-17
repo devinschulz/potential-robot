@@ -1,3 +1,4 @@
 %header.masthead{role: "banner"}
-  = embedded_svg "flourish.svg", options={ class: "flourish" }
+  - unless defined? flourish
+    = embedded_svg "flourish.svg", options={ class: "flourish" }
   %h1.masthead__title= masthead_title
